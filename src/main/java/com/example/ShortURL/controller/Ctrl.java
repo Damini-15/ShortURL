@@ -50,6 +50,7 @@ public class Ctrl {
 
     @GetMapping("chotaURL/{id}")
     public ResponseEntity<Void> redirect(@PathVariable(value="id") long id){
+        urlService.incrementCounter(id);
         Chotaurl chotaurl=urlService.readByID(id);
         String longUrl = chotaurl.getLongURL();
         if (!longUrl.startsWith("http://") && !longUrl.startsWith("https://")) {
