@@ -37,4 +37,13 @@ public class UrlService {
     public void delete(long id){
         urlRepo.deleteById(id);
     }
+
+    public void incrementCounter(long id){
+        Optional<Chotaurl> shrt = urlRepo.findById(id);
+        Chotaurl oldshrt = shrt.get();
+        int olccount = oldshrt.getCount();
+        oldshrt.setCount(olccount+1);
+        urlRepo.save(oldshrt);
+
+    }
 }
